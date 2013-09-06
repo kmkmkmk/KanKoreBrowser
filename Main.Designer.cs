@@ -118,20 +118,22 @@
             // version
             // 
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(152, 22);
+            this.version.Size = new System.Drawing.Size(134, 22);
             this.version.Text = "ばーじょん";
             this.version.Click += new System.EventHandler(this.ばーじょんToolStripMenuItem_Click);
             // 
             // LoginID
             // 
-            this.LoginID.Location = new System.Drawing.Point(484, 1);
+            this.LoginID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoginID.Location = new System.Drawing.Point(484, 2);
             this.LoginID.Name = "LoginID";
             this.LoginID.Size = new System.Drawing.Size(239, 19);
             this.LoginID.TabIndex = 2;
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(724, 0);
+            this.Login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Login.Location = new System.Drawing.Point(724, 1);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(75, 20);
             this.Login.TabIndex = 3;
