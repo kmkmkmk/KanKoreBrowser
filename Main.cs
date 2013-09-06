@@ -16,10 +16,8 @@ namespace 艦これぶらうざぁ
         public Main()
         {
             InitializeComponent();
-            
-            String swfPath = "http://125.6.189.7/kcs/mainD2.swf";
-            axShockwaveFlash1.LoadMovie(0, swfPath);
             Settings.LoadFromXmlFile();
+            axShockwaveFlash1.LoadMovie(0, "http://125.6.189.7/kcs/mainD2.swf");
         }
 
         private void スクリーンショット撮影ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,13 +30,12 @@ namespace 艦これぶらうざぁ
                 PrintWindow(axShockwaveFlash1.Handle, dc, 0);
                 memg.ReleaseHdc(dc);
                 memg.Dispose();
-                string fmts = @"yyyy-MM-dd_HH-mm-ss";
-                img.Save(Settings.Instance.save_s + "\\KanKore_" + DateTime.Now.ToString(fmts) + ".png", ImageFormat.Png);
+                img.Save(Settings.Instance.save_s + "\\KanKore_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png", ImageFormat.Png);
             }
             else
             {
                 MessageBox.Show("保存先が設定されていません。\n保存先を設定して下さい","警告",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                スクリーンショット保存先ToolStripMenuItem.PerformClick();
+                SaveFolder.PerformClick();
             }
         }
 
@@ -50,20 +47,19 @@ namespace 艦これぶらうざぁ
             {
                 Settings.Instance.save_s = fbd.SelectedPath;
                 Settings.SaveToXmlFile();
-                Settings.LoadFromXmlFile();
             }
         }
 
         private void 最前面表示ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(最前面表示ToolStripMenuItem.Checked)
+            if(TopShow.Checked)
             {
-                最前面表示ToolStripMenuItem.Checked = false;
+                TopShow.Checked = false;
                 TopMost = false;
             }
             else
             {
-                最前面表示ToolStripMenuItem.Checked = true;
+                TopShow.Checked = true;
                 TopMost = true;
             }
 
@@ -76,19 +72,18 @@ namespace 艦これぶらうざぁ
 
         private void ばーじょんToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("艦これぶらうざぁ verXX.XX\nLicense Agreement (The MIT/X11 License)\nCopyright (c) 2013 k725.\nhttp://my.iesaba.com/", "ばーじょん", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("艦これぶらうざぁ 万年Beta版\nLicense Agreement (The MIT/X11 License)\nCopyright (c) 2013 k725.\nhttp://my.iesaba.com/", "ばーじょん", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "")
+            if(LoginID.Text == "")
             {
                 MessageBox.Show("何も入力されていません","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             else
             {
-                 String swfPath = textBox1.Text;
-                 axShockwaveFlash1.LoadMovie(0, swfPath);
+                 axShockwaveFlash1.LoadMovie(0, LoginID.Text);
             }
         }
     }
