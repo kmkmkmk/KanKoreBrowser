@@ -53,7 +53,7 @@ namespace 艦これぶらうざぁ
             {
                 //保存先未設定の場合
                 MessageBox.Show("保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ScreecShotToolStripMenuItem.PerformClick();
+                ScreenShotSaveToolStripMenuItem.PerformClick();
             }
         }
 
