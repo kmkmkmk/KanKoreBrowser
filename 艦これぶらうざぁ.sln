@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "艦これぶらうざぁ", "艦これぶらうざぁ.csproj", "{CD4A8765-CF68-401F-8ECB-5910018616CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "艦これぶらうざぁ", "艦これぶらうざぁ\艦これぶらうざぁ.csproj", "{693E214A-C9D1-46AC-9F4D-6C9F618E5916}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD4A8765-CF68-401F-8ECB-5910018616CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD4A8765-CF68-401F-8ECB-5910018616CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD4A8765-CF68-401F-8ECB-5910018616CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD4A8765-CF68-401F-8ECB-5910018616CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693E214A-C9D1-46AC-9F4D-6C9F618E5916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693E214A-C9D1-46AC-9F4D-6C9F618E5916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693E214A-C9D1-46AC-9F4D-6C9F618E5916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693E214A-C9D1-46AC-9F4D-6C9F618E5916}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
