@@ -151,23 +151,54 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "$(TargetDir)chrome\"
+
 mkdir "$(TargetDir)components\"
+
 mkdir "$(TargetDir)defaults\"
+mkdir "$(TargetDir)defaults\autoconfig\"
+mkdir "$(TargetDir)defaults\pref\"
+mkdir "$(TargetDir)defaults\profile\"
+
 mkdir "$(TargetDir)dictionaries\"
+
 mkdir "$(TargetDir)greprefs\"
+
 mkdir "$(TargetDir)modules\"
+
 mkdir "$(TargetDir)plugins\"
+
 mkdir "$(TargetDir)res\"
-copy "$(SolutionDir)packages\TweetSharp.2.3.1\LICENSE_TweetSharp.txt" "$(TargetDir)"
+mkdir "$(TargetDir)res\dtd\"
+mkdir "$(TargetDir)res\entityTables\"
+mkdir "$(TargetDir)res\fonts\"
+mkdir "$(TargetDir)res\html\"
+
+copy "$(SolutionDir)packages\TweetSharp.2.3.1\LICENSE.md" "$(TargetDir)LICENCE_TweetSharp.txt"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\" "$(TargetDir)"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\chrome\" "$(TargetDir)\chrome\"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\components\" "$(TargetDir)\components\"
-copy "$(ProjectDir)GeckoFX\xulrunner\defaults\" "$(TargetDir)\defaults\"
+
+copy "$(ProjectDir)GeckoFX\xulrunner\defaults\autoconfig\" "$(TargetDir)\defaults\autoconfig\"
+copy "$(ProjectDir)GeckoFX\xulrunner\defaults\pref\" "$(TargetDir)\defaults\pref\"
+copy "$(ProjectDir)GeckoFX\xulrunner\defaults\profile\" "$(TargetDir)\defaults\profile\"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\dictionaries\" "$(TargetDir)\dictionaries\"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\greprefs\" "$(TargetDir)\greprefs\"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\modules\" "$(TargetDir)\modules\"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\plugins\" "$(TargetDir)\plugins\"
+
 copy "$(ProjectDir)GeckoFX\xulrunner\res\" "$(TargetDir)\res\"
+copy "$(ProjectDir)GeckoFX\xulrunner\res\dtd\" "$(TargetDir)\res\dtd\"
+copy "$(ProjectDir)GeckoFX\xulrunner\res\entityTables\" "$(TargetDir)\res\entityTables\"
+copy "$(ProjectDir)GeckoFX\xulrunner\res\fonts\" "$(TargetDir)\res\fonts\"
+copy "$(ProjectDir)GeckoFX\xulrunner\res\html\" "$(TargetDir)\res\html\"
+
 copy "$(ProjectDir)艦これぶらうざぁ.config" "$(TargetDir)"
 copy "$(ProjectDir)LICENSE_艦これぶらうざぁ.txt" "$(TargetDir)"
 copy "$(ProjectDir)README.md" "$(TargetDir)"</PostBuildEvent>

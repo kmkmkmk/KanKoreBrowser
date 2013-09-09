@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using TweetSharp;
 
@@ -15,6 +17,7 @@ namespace 艦これぶらうざぁ
         public TwitterPost()
         {
             InitializeComponent();
+            //xml読み込み
             Settings.LoadFromXmlFile();
         }
 
@@ -32,47 +35,50 @@ namespace 艦これぶらうざぁ
                 MessageBox.Show("Twitterアカウントが設定されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
+
+            if (Settings.Instance.hashtag_s == "True")
+            {
+                HashTag.Checked = true;
+            }
+            else
+            {
+                HashTag.Checked = false;
+            }
         }
 
         private void Tweet_Click(object sender, EventArgs e)
         {
-            //ハッシュタグ
-            String hashtag = "";
-            if (Settings.Instance.hashtag_s == "True")
+            if (TweetText.Text != "")
             {
-                hashtag = " #艦これ";
-            }
+                //ハッシュタグ
+                String hashtag = "";
+                if (HashTag.Checked == true)
+                {
+                    hashtag = " #艦これ";
+                }
+                else if (HashTag.Checked == false)
+                {
+                    hashtag = "";
+                }
 
-            //POST、画像つきPOST 選択されていなければエラー
-            if (imagepath != "")
-            {
-                string photo = imagepath;
-                var stream = new FileStream(photo, FileMode.Open);
-                SendTweetWithMediaOptions opt = new SendTweetWithMediaOptions();
-                opt.Status = TweetText.Text + hashtag;
-                opt.Images = new Dictionary<string, Stream> { { "image", stream } };
-                service.SendTweetWithMedia(opt);
-                TweetText.Text = "";
-                Thumbnail.ImageLocation = "";
-            }
-            else
-            {
-                service.SendTweet(new SendTweetOptions { Status = TweetText.Text + hashtag });
-                TweetText.Text = "";
-            }
-        }
+                //POST、画像つきPOST 選択されていなければエラー
+                if (imagepath != "")
+                {
+                    string photo = imagepath;
+                    var stream = new FileStream(photo, FileMode.Open);
+                    SendTweetWithMediaOptions opt = new SendTweetWithMediaOptions();
+                    opt.Status = TweetText.Text + hashtag;
+                    opt.Images = new Dictionary<string, Stream> { { "image", stream } };
+                    service.SendTweetWithMedia(opt);
+                    TweetText.Text = "";
+                    Thumbnail.ImageLocation = "";
+                }
+                else
+                {
+                    service.SendTweet(new SendTweetOptions { Status = TweetText.Text + hashtag });
+                    TweetText.Text = "";
+                }
 
-        private void PictureSelect_Click(object sender, EventArgs e)
-        {
-            //画像選択
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "画像ファイル(*.png;*.jpg;*.gif)|*.png;*.jpg;*.gif";
-            ofd.Title = "アップロードするファイルを選択してください";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                Console.WriteLine(ofd.FileName);
-                imagepath = ofd.FileName;
-                Thumbnail.ImageLocation = ofd.FileName;
             }
         }
 
@@ -90,6 +96,27 @@ namespace 艦これぶらうざぁ
                 Settings.Instance.hashtag_s = "False";
             }
             Settings.SaveToXmlFile();
+        }
+
+        private void TweetText_TextChanged(object sender, EventArgs e)
+        {
+            //文字数カウント
+            int iLength = this.TweetText.TextLength;
+            TweetCharacters.Text = iLength.ToString();
+        }
+
+        private void Thumbnail_Click(object sender, EventArgs e)
+        {
+            //画像選択
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "画像ファイル(*.png;*.jpg;*.gif)|*.png;*.jpg;*.gif";
+            ofd.Title = "アップロードするファイルを選択してください";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Console.WriteLine(ofd.FileName);
+                imagepath = ofd.FileName;
+                Thumbnail.ImageLocation = ofd.FileName;
+            }
         }
     }
 }
