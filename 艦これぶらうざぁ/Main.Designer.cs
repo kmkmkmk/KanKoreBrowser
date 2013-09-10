@@ -34,14 +34,14 @@
             this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ScreecShotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ScreenShotSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TwitterLoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TwitterPostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VersionInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
-            this.TwitterLoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TwitterPostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.SuspendLayout();
@@ -61,8 +61,8 @@
             // 
             this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LoginToolStripMenuItem,
-            this.ScreecShotToolStripMenuItem,
             this.ScreenShotSaveToolStripMenuItem,
+            this.ScreecShotToolStripMenuItem,
             this.TwitterLoginToolStripMenuItem,
             this.TwitterPostToolStripMenuItem,
             this.TopShowToolStripMenuItem,
@@ -91,6 +91,20 @@
             this.ScreenShotSaveToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.ScreenShotSaveToolStripMenuItem.Text = "スクリーンショット保存先";
             this.ScreenShotSaveToolStripMenuItem.Click += new System.EventHandler(this.ScreenShotSaveToolStripMenuItem_Click);
+            // 
+            // TwitterLoginToolStripMenuItem
+            // 
+            this.TwitterLoginToolStripMenuItem.Name = "TwitterLoginToolStripMenuItem";
+            this.TwitterLoginToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.TwitterLoginToolStripMenuItem.Text = "Twitterログイン";
+            this.TwitterLoginToolStripMenuItem.Click += new System.EventHandler(this.TwitterLoginToolStripMenuItem_Click);
+            // 
+            // TwitterPostToolStripMenuItem
+            // 
+            this.TwitterPostToolStripMenuItem.Name = "TwitterPostToolStripMenuItem";
+            this.TwitterPostToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.TwitterPostToolStripMenuItem.Text = "Twitter投稿";
+            this.TwitterPostToolStripMenuItem.Click += new System.EventHandler(this.TwitterPostToolStripMenuItem_Click);
             // 
             // TopShowToolStripMenuItem
             // 
@@ -140,20 +154,6 @@
             this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
             this.axShockwaveFlash1.Size = new System.Drawing.Size(800, 480);
             this.axShockwaveFlash1.TabIndex = 1;
-            // 
-            // TwitterLoginToolStripMenuItem
-            // 
-            this.TwitterLoginToolStripMenuItem.Name = "TwitterLoginToolStripMenuItem";
-            this.TwitterLoginToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.TwitterLoginToolStripMenuItem.Text = "Twitterログイン";
-            this.TwitterLoginToolStripMenuItem.Click += new System.EventHandler(this.TwitterLoginToolStripMenuItem_Click);
-            // 
-            // TwitterPostToolStripMenuItem
-            // 
-            this.TwitterPostToolStripMenuItem.Name = "TwitterPostToolStripMenuItem";
-            this.TwitterPostToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.TwitterPostToolStripMenuItem.Text = "Twitter投稿";
-            this.TwitterPostToolStripMenuItem.Click += new System.EventHandler(this.TwitterPostToolStripMenuItem_Click);
             // 
             // Main
             // 

@@ -11,6 +11,7 @@ namespace 艦これぶらうざぁ
             //タイマーのinterval
             timer1.Interval = 1000;
             timer2.Interval = 1000;
+            timer3.Interval = 3000;
             //xml読み込み
             Settings.LoadFromXmlFile();
             
@@ -25,6 +26,9 @@ namespace 艦これぶらうざぁ
                 System.Net.NetworkInformation.PingReply reply = p.Send("www.dmm.com");
                 p.Dispose();
                 geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
+
+                //タイマー開始
+                timer3.Start();
             }
             catch
             {
@@ -33,20 +37,11 @@ namespace 艦これぶらうざぁ
             }
         }
 
-        private void Logined_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
-            //ログイン処理
-            if (geckoWebBrowser1.Url.ToString() == "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/")
-            {
-                //js実行
-                geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"iframe\").attr(\"src\")})();");
-                //タイマースタート
-                timer1.Start();
-            }
-            else
-            {
-                MessageBox.Show("ログイン後に操作を行って下さい!!", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
-            }
+            //タイマーストップ and 閉じる
+            timer3.Stop();
+            Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -68,6 +63,20 @@ namespace 艦これぶらうざぁ
             timer2.Stop();
             //閉じる
             Close();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            //ログイン処理
+            if (geckoWebBrowser1.Url.ToString() == "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/")
+            {
+                //js実行
+                geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"iframe\").attr(\"src\")})();");
+                //タイマースタート
+                timer1.Start();
+                //タイマー終了
+                timer3.Stop();
+            }
         }
     }
 }

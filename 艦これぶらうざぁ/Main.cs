@@ -31,7 +31,10 @@ namespace 艦これぶらうざぁ
             f.ShowDialog(this);
             f.Dispose();
             //LoginForm閉じた後にxmlからToken取得
-            axShockwaveFlash1.LoadMovie(0, Settings.Instance.tokenurl_s);
+            if (Settings.Instance.tokenurl_s != "")
+            {
+                axShockwaveFlash1.LoadMovie(0, Settings.Instance.tokenurl_s);
+            }
         }
 
         private void ScreenShotToolStripMenuItem_Click(object sender, EventArgs e)
