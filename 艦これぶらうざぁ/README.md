@@ -5,13 +5,13 @@ KanKoreBrowser
 
 使い方
 ======
-ここみて、どうぞ[url]http://info.iesaba.com/kankore[/url]
+ここみて、どうぞ [http://info.iesaba.com/kankore]
 
 using library
 =============
 *GeckoFX  
 *XULRunner  
-*TweetSharp
+*TweetSharp  
 *Newtonsoft Json
 
 LICENSE
