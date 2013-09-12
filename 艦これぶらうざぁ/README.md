@@ -5,8 +5,7 @@ KanKoreBrowser
 
 使い方
 ======
-勘で。  
-嘘です近いうちにサイト組みます。  
+ここみて、どうぞ[url]http://info.iesaba.com/kankore[/url]
 
 using library
 =============
