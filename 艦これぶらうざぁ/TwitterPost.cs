@@ -19,6 +19,8 @@ namespace 艦これぶらうざぁ
             InitializeComponent();
             //xml読み込み
             Settings.LoadFromXmlFile();
+            //Tweetボタンを無効化
+            Tweet.Enabled = false;
         }
 
         private void TwitterPost_Load(object sender, EventArgs e)
@@ -46,40 +48,13 @@ namespace 艦これぶらうざぁ
             }
         }
 
+        //メゾットに対応するデリゲートを宣言
+        private delegate void TweetDelegate();
         private void Tweet_Click(object sender, EventArgs e)
         {
-            if (TweetText.Text != "")
-            {
-                //ハッシュタグ
-                String hashtag = "";
-                if (HashTag.Checked == true)
-                {
-                    hashtag = " #艦これ";
-                }
-                else if (HashTag.Checked == false)
-                {
-                    hashtag = "";
-                }
-
-                //POST、画像つきPOST 選択されていなければエラー
-                if (imagepath != "")
-                {
-                    string photo = imagepath;
-                    var stream = new FileStream(photo, FileMode.Open);
-                    SendTweetWithMediaOptions opt = new SendTweetWithMediaOptions();
-                    opt.Status = TweetText.Text + hashtag;
-                    opt.Images = new Dictionary<string, Stream> { { "image", stream } };
-                    service.SendTweetWithMedia(opt);
-                    TweetText.Text = "";
-                    Thumbnail.ImageLocation = "";
-                }
-                else
-                {
-                    service.SendTweet(new SendTweetOptions { Status = TweetText.Text + hashtag });
-                    TweetText.Text = "";
-                }
-
-            }
+            //非同期処理
+            TweetDelegate t = new TweetDelegate(Tweet_Post);
+            t.BeginInvoke(null, null);
         }
 
         private void HashTag_CheckedChanged(object sender, EventArgs e)
@@ -103,6 +78,16 @@ namespace 艦これぶらうざぁ
             //文字数カウント
             int iLength = this.TweetText.TextLength;
             TweetCharacters.Text = iLength.ToString();
+
+            //文字数でボタンの有効/無効
+            if (iLength.ToString() != "0")
+            {
+                Tweet.Enabled = true;
+            }
+            else if (iLength.ToString() == "0")
+            {
+                Tweet.Enabled = false;
+            }
         }
 
         private void Thumbnail_Click(object sender, EventArgs e)
@@ -116,6 +101,37 @@ namespace 艦これぶらうざぁ
                 Console.WriteLine(ofd.FileName);
                 imagepath = ofd.FileName;
                 Thumbnail.ImageLocation = ofd.FileName;
+            }
+        }
+
+        //非同期処理でのツイート
+        private void Tweet_Post()
+        {
+
+            //ハッシュタグ
+            String hashtag = "";
+            if (HashTag.Checked == true)
+            {
+                hashtag = " #艦これ";
+            }
+            else if (HashTag.Checked == false)
+            {
+                hashtag = "";
+            }
+
+            //POST、画像つきPOST
+            if (imagepath != "")
+            {
+                string photo = imagepath;
+                var stream = new FileStream(photo, FileMode.Open);
+                SendTweetWithMediaOptions opt = new SendTweetWithMediaOptions();
+                opt.Status = TweetText.Text + hashtag;
+                opt.Images = new Dictionary<string, Stream> { { "image", stream } };
+                service.SendTweetWithMedia(opt);
+            }
+            else
+            {
+                service.SendTweet(new SendTweetOptions { Status = TweetText.Text + hashtag });
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
@@ -30,6 +31,7 @@ namespace 艦これぶらうざぁ
             f.ShowInTaskbar = false;
             f.ShowDialog(this);
             f.Dispose();
+
             //LoginForm閉じた後にxmlからToken取得
             if (Settings.Instance.tokenurl_s != "")
             {
@@ -58,28 +60,6 @@ namespace 艦これぶらうざぁ
                 MessageBox.Show("保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ScreenShotSaveToolStripMenuItem.PerformClick();
             }
-        }
-
-        private void ScreenShotSaveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //スクリーンショット保存先設定
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "保存先フォルダを指定してください。";
-            if (fbd.ShowDialog(this) == DialogResult.OK)
-            {
-                //xmlに記述 -> Settings.cs内参照
-                Settings.Instance.save_s = fbd.SelectedPath;
-                Settings.SaveToXmlFile();
-            }
-        }
-
-        private void TwitterLoginToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //TwitterLoginFormShow
-            TwitterLogin f = new TwitterLogin();
-            f.ShowInTaskbar = false;
-            f.ShowDialog(this);
-            f.Dispose();
         }
 
         private void TwitterPostToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,6 +94,28 @@ namespace 艦これぶらうざぁ
             Close();
         }
 
+        private void ScreenShotSaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //スクリーンショット保存先設定
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "保存先フォルダを指定してください。";
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                //xmlに記述 -> Settings.cs内参照
+                Settings.Instance.save_s = fbd.SelectedPath;
+                Settings.SaveToXmlFile();
+            }
+        }
+
+        private void TwitterLoginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TwitterLoginFormShow
+            TwitterLogin f = new TwitterLogin();
+            f.ShowInTaskbar = false;
+            f.ShowDialog(this);
+            f.Dispose();
+        }
+
         private void VersionInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Assembly取得 and バージョン情報
@@ -129,6 +131,12 @@ namespace 艦これぶらうざぁ
             GC.Collect();
         }
 
+        private void UpdateCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ダウンロードページ開く
+            Process.Start("http://info.iesaba.com/kankore/download.htm");
+        }
+
         private void Main_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             //終了確認
@@ -136,6 +144,7 @@ namespace 艦これぶらうざぁ
             {
                 e.Cancel = true;
             }
+
             //Token削除
             Settings.Instance.tokenurl_s = "";
             Settings.SaveToXmlFile();

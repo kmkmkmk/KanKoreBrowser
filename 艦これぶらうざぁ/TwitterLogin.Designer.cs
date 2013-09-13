@@ -56,7 +56,9 @@
             // 
             // PINTextBox
             // 
+            this.PINTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.PINTextBox.Location = new System.Drawing.Point(12, 41);
+            this.PINTextBox.MaxLength = 10;
             this.PINTextBox.Name = "PINTextBox";
             this.PINTextBox.Size = new System.Drawing.Size(90, 19);
             this.PINTextBox.TabIndex = 2;
@@ -65,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(199, 76);
+            this.ClientSize = new System.Drawing.Size(199, 73);
             this.Controls.Add(this.PINTextBox);
             this.Controls.Add(this.PINLogin);
             this.Controls.Add(this.BrowserLogin);
@@ -74,6 +76,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TwitterLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TwitterLogin";
             this.ResumeLayout(false);
             this.PerformLayout();

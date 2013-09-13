@@ -116,6 +116,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TwitterPost";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TwitterPost";
             this.Load += new System.EventHandler(this.TwitterPost_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail)).EndInit();

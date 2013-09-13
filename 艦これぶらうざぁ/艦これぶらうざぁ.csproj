@@ -147,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin.ico" />
+    <None Include="Resources\Raise.png" />
+    <None Include="Resources\Info.png" />
+    <None Include="Resources\Exit.png" />
+    <None Include="Resources\Twitter.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Key.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

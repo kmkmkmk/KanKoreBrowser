@@ -34,7 +34,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.Close = new System.Windows.Forms.Button();
+            this.CloseForm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -57,15 +57,15 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // Close
+            // CloseForm
             // 
-            this.Close.Location = new System.Drawing.Point(418, 314);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 23);
-            this.Close.TabIndex = 2;
-            this.Close.Text = "閉じる";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
+            this.CloseForm.Location = new System.Drawing.Point(418, 314);
+            this.CloseForm.Name = "CloseForm";
+            this.CloseForm.Size = new System.Drawing.Size(75, 23);
+            this.CloseForm.TabIndex = 2;
+            this.CloseForm.Text = "閉じる";
+            this.CloseForm.UseVisualStyleBackColor = true;
+            this.CloseForm.Click += new System.EventHandler(this.Close_Click);
             // 
             // label1
             // 
@@ -83,11 +83,12 @@
             this.ClientSize = new System.Drawing.Size(504, 345);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Close);
+            this.Controls.Add(this.CloseForm);
             this.Controls.Add(this.geckoWebBrowser1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
@@ -101,7 +102,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
-        private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Button CloseForm;
         private System.Windows.Forms.Label label1;
     }
 }
