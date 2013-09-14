@@ -76,7 +76,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TwitterLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TwitterLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
