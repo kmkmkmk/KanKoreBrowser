@@ -36,6 +36,8 @@
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.CloseForm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.GameLogout = new System.Windows.Forms.Button();
+            this.GameLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // geckoWebBrowser1
@@ -59,9 +61,9 @@
             // 
             // CloseForm
             // 
-            this.CloseForm.Location = new System.Drawing.Point(418, 314);
+            this.CloseForm.Location = new System.Drawing.Point(429, 314);
             this.CloseForm.Name = "CloseForm";
-            this.CloseForm.Size = new System.Drawing.Size(75, 23);
+            this.CloseForm.Size = new System.Drawing.Size(64, 23);
             this.CloseForm.TabIndex = 2;
             this.CloseForm.Text = "閉じる";
             this.CloseForm.UseVisualStyleBackColor = true;
@@ -72,16 +74,38 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 319);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(333, 12);
+            this.label1.Size = new System.Drawing.Size(247, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "ID/Password入力後ログインボタンを押して下さい。自動で処理します";
+            this.label1.Text = "ID/Password入力後ログインボタンを押して下さい。\r\n自動で処理します";
+            // 
+            // GameLogout
+            // 
+            this.GameLogout.Location = new System.Drawing.Point(263, 314);
+            this.GameLogout.Name = "GameLogout";
+            this.GameLogout.Size = new System.Drawing.Size(64, 23);
+            this.GameLogout.TabIndex = 4;
+            this.GameLogout.Text = "ログアウト";
+            this.GameLogout.UseVisualStyleBackColor = true;
+            this.GameLogout.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // GameLogin
+            // 
+            this.GameLogin.Location = new System.Drawing.Point(332, 314);
+            this.GameLogin.Name = "GameLogin";
+            this.GameLogin.Size = new System.Drawing.Size(91, 23);
+            this.GameLogin.TabIndex = 5;
+            this.GameLogin.Text = "ログインページ";
+            this.GameLogin.UseVisualStyleBackColor = true;
+            this.GameLogin.Click += new System.EventHandler(this.GameLogin_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 345);
+            this.ClientSize = new System.Drawing.Size(504, 349);
             this.ControlBox = false;
+            this.Controls.Add(this.GameLogin);
+            this.Controls.Add(this.GameLogout);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CloseForm);
             this.Controls.Add(this.geckoWebBrowser1);
@@ -103,5 +127,7 @@
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Button CloseForm;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button GameLogout;
+        private System.Windows.Forms.Button GameLogin;
     }
 }

@@ -80,5 +80,17 @@ namespace 艦これぶらうざぁ
                 timer3.Stop();
             }
         }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            // ログアウトURL
+            geckoWebBrowser1.Navigate("http://www.dmm.com/my/-/login/logout/");            
+        }
+
+        private void GameLogin_Click(object sender, EventArgs e)
+        {
+            // 艦これゲームURL(未ログインの場合はログイン画面)
+            geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
+        }
     }
 }
