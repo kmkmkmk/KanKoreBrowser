@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.geckoWebBrowser1 = new Skybound.Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.CloseForm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.GameLogout = new System.Windows.Forms.Button();
@@ -50,14 +48,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // timer3
-            // 
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // CloseForm
             // 
@@ -123,8 +113,6 @@
 
         private Skybound.Gecko.GeckoWebBrowser geckoWebBrowser1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Button CloseForm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button GameLogout;

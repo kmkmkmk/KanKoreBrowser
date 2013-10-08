@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 艦これぶらうざぁ
@@ -9,12 +10,9 @@ namespace 艦これぶらうざぁ
         {
             InitializeComponent();
             // タイマーのinterval
-            timer1.Interval = 1000;
-            timer2.Interval = 1000;
-            timer3.Interval = 3000;
+            timer1.Interval = 3000;
             // xml読み込み
             Settings.LoadFromXmlFile();
-            
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -28,7 +26,7 @@ namespace 艦これぶらうざぁ
                 geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
 
                 // タイマー開始
-                timer3.Start();
+                timer1.Start();
             }
             catch
             {
@@ -41,43 +39,31 @@ namespace 艦これぶらうざぁ
         private void Close_Click(object sender, EventArgs e)
         {
             // タイマーストップ
-            timer3.Stop();
-            // 閉じる
-            Close();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            // Javascript実行
-            geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"embed\").attr(\"src\")})();");
-            // タイマースタート
-            timer2.Start();
-            // タイマーストップ
             timer1.Stop();
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            // xmlに保存
-            Settings.Instance.tokenurl_s = geckoWebBrowser1.Url.ToString();
-            Settings.SaveToXmlFile();
-            // タイマーストップ
-            timer2.Stop();
             // 閉じる
             Close();
         }
 
-        private void timer3_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
             // ログイン処理
             if (geckoWebBrowser1.Url.ToString() == "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/")
             {
                 // Javascript実行
                 geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"iframe\").attr(\"src\")})();");
-                // タイマースタート
-                timer1.Start();
+                //非同期で2秒間待機
+                await Task.Delay(2000);
+                // Javascript実行
+                geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"embed\").attr(\"src\")})();");
+                //非同期で2秒間待機
+                await Task.Delay(2000);
+                // xmlに保存
+                Settings.Instance.tokenurl_s = geckoWebBrowser1.Url.ToString();
+                Settings.SaveToXmlFile();
+                // 閉じる
+                Close();
                 // タイマー終了
-                timer3.Stop();
+                timer1.Stop();
             }
         }
 
