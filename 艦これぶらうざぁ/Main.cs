@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace 艦これぶらうざぁ
 {
@@ -90,7 +91,16 @@ namespace 艦これぶらうざぁ
             // xml保存
             Settings.SaveToXmlFile();
             // SWF読み込み
-            axShockwaveFlash1.LoadMovie(0, "http://125.6.189.7/kcs/mainD2.swf");
+            try
+            {
+                axShockwaveFlash1.LoadMovie(0, "http://125.6.189.7/kcs/mainD2.swf");
+            }
+            catch
+            {
+                MessageBox.Show("インターネットに接続されていないか相手先サーバーがダウンしています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
+
             // ClosingEvent
             this.FormClosing += new FormClosingEventHandler(Main_Closing);
         }
@@ -191,8 +201,8 @@ namespace 艦これぶらうざぁ
         private void VersionInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Assembly取得
-            System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
-            System.Version ver = asm.GetName().Version;
+            Assembly asm = Assembly.GetExecutingAssembly();
+            Version ver = asm.GetName().Version;
             // メッセージボックス表示
             MessageBox.Show("艦これぶらうざぁ " + ver + "\nLicense Agreement (The MIT/X11 License)\nCopyright (c) 2013 k725.\nhttp://my.iesaba.com/", "ばーじょん", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -206,7 +216,12 @@ namespace 艦これぶらうざぁ
         private void UpdateCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // ダウンロードページ開く
-            Process.Start("http://info.iesaba.com/kankore/download.htm");
+            // Process.Start("http://info.iesaba.com/kankore/download.htm");
+            // アップデートフォーム表示
+            Update f = new Update();
+            f.ShowInTaskbar = false;
+            f.ShowDialog(this);
+            f.Dispose();
         }
 
         private void Main_Closing(object sender, System.ComponentModel.CancelEventArgs e)
