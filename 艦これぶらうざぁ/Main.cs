@@ -17,6 +17,7 @@ namespace 艦これぶらうざぁ
 
         #region WindowsAPI(フォーム比率固定)
         // 比率(14.5:9)
+        // Windowの比率に合わせるのも問題ありだし色々検討
         const double fixedRate = (double)14.5 / 9;
         const int WM_SIZING = 0x214;
         const int WMSZ_LEFT = 1;
