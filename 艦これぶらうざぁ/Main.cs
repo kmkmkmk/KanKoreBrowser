@@ -101,9 +101,6 @@ namespace 艦これぶらうざぁ
                 MessageBox.Show("インターネットに接続されていないか相手先サーバーがダウンしています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
-
-            // ClosingEvent
-            this.FormClosing += new FormClosingEventHandler(Main_Closing);
         }
 
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)

@@ -38,7 +38,16 @@
   <PropertyGroup>
     <ApplicationIcon>bin.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Geckofx-Core">
+      <HintPath>GeckoFX_Xulrunner\Geckofx-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Winforms">
+      <HintPath>GeckoFX_Xulrunner\Geckofx-Winforms.dll</HintPath>
+    </Reference>
     <Reference Include="Hammock.ClientProfile">
       <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
     </Reference>
@@ -165,60 +174,21 @@
     <None Include="Resources\Save.png" />
     <None Include="Resources\Key.png" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(TargetDir)chrome\"
-
-mkdir "$(TargetDir)components\"
-
-mkdir "$(TargetDir)defaults\"
-mkdir "$(TargetDir)defaults\autoconfig\"
-mkdir "$(TargetDir)defaults\pref\"
-mkdir "$(TargetDir)defaults\profile\"
-
-mkdir "$(TargetDir)dictionaries\"
-
-mkdir "$(TargetDir)greprefs\"
-
-mkdir "$(TargetDir)modules\"
-
-mkdir "$(TargetDir)plugins\"
-
-mkdir "$(TargetDir)res\"
-mkdir "$(TargetDir)res\dtd\"
-mkdir "$(TargetDir)res\entityTables\"
-mkdir "$(TargetDir)res\fonts\"
-mkdir "$(TargetDir)res\html\"
-
-copy "$(SolutionDir)packages\TweetSharp.2.3.1\LICENSE.md" "$(TargetDir)LICENCE_TweetSharp.txt"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\" "$(TargetDir)"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\chrome\" "$(TargetDir)\chrome\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\components\" "$(TargetDir)\components\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\defaults\autoconfig\" "$(TargetDir)\defaults\autoconfig\"
-copy "$(ProjectDir)GeckoFX\xulrunner\defaults\pref\" "$(TargetDir)\defaults\pref\"
-copy "$(ProjectDir)GeckoFX\xulrunner\defaults\profile\" "$(TargetDir)\defaults\profile\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\dictionaries\" "$(TargetDir)\dictionaries\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\greprefs\" "$(TargetDir)\greprefs\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\modules\" "$(TargetDir)\modules\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\plugins\" "$(TargetDir)\plugins\"
-
-copy "$(ProjectDir)GeckoFX\xulrunner\res\" "$(TargetDir)\res\"
-copy "$(ProjectDir)GeckoFX\xulrunner\res\dtd\" "$(TargetDir)\res\dtd\"
-copy "$(ProjectDir)GeckoFX\xulrunner\res\entityTables\" "$(TargetDir)\res\entityTables\"
-copy "$(ProjectDir)GeckoFX\xulrunner\res\fonts\" "$(TargetDir)\res\fonts\"
-copy "$(ProjectDir)GeckoFX\xulrunner\res\html\" "$(TargetDir)\res\html\"
-
+    <PostBuildEvent>mkdir "$(TargetDir)LICENSE\"
+copy "$(SolutionDir)LICENSE\" "$(TargetDir)LICENSE\"
+copy "$(SolutionDir)README.md" "$(TargetDir)"
 copy "$(ProjectDir)艦これぶらうざぁ.config" "$(TargetDir)"
-copy "$(ProjectDir)LICENSE_艦これぶらうざぁ.txt" "$(TargetDir)"
-copy "$(ProjectDir)README.md" "$(TargetDir)"</PostBuildEvent>
+copy "$(ProjectDir)GeckoFX_Xulrunner\" "$(TargetDir)"
+del "$(TargetDir)艦これぶらうざぁ.exe.config"
+del "$(TargetDir)Newtonsoft.Json.xml"
+del "$(TargetDir)Hammock.ClientProfile.pdb"
+del "$(TargetDir)TweetSharp.pdb"
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

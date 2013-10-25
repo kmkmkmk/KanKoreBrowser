@@ -1,4 +1,5 @@
-﻿namespace 艦これぶらうざぁ
+﻿using System.Windows.Forms;
+namespace 艦これぶらうざぁ
 {
     partial class Login
     {
@@ -30,47 +31,29 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.geckoWebBrowser1 = new Skybound.Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.CloseForm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.GameLogout = new System.Windows.Forms.Button();
             this.GameLogin = new System.Windows.Forms.Button();
+            this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.SuspendLayout();
-            // 
-            // geckoWebBrowser1
-            // 
-            this.geckoWebBrowser1.Location = new System.Drawing.Point(12, 12);
-            this.geckoWebBrowser1.Name = "geckoWebBrowser1";
-            this.geckoWebBrowser1.Size = new System.Drawing.Size(481, 296);
-            this.geckoWebBrowser1.TabIndex = 1;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // CloseForm
-            // 
-            this.CloseForm.Location = new System.Drawing.Point(429, 314);
-            this.CloseForm.Name = "CloseForm";
-            this.CloseForm.Size = new System.Drawing.Size(64, 23);
-            this.CloseForm.TabIndex = 2;
-            this.CloseForm.Text = "閉じる";
-            this.CloseForm.UseVisualStyleBackColor = true;
-            this.CloseForm.Click += new System.EventHandler(this.Close_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 319);
+            this.label1.Location = new System.Drawing.Point(10, 245);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 24);
+            this.label1.Size = new System.Drawing.Size(289, 12);
             this.label1.TabIndex = 3;
-            this.label1.Text = "ID/Password入力後ログインボタンを押して下さい。\r\n自動で処理します";
+            this.label1.Text = "ID/Password入力後ページ内ログインボタンを押して下さい。";
             // 
             // GameLogout
             // 
-            this.GameLogout.Location = new System.Drawing.Point(263, 314);
+            this.GameLogout.Location = new System.Drawing.Point(152, 260);
             this.GameLogout.Name = "GameLogout";
             this.GameLogout.Size = new System.Drawing.Size(64, 23);
             this.GameLogout.TabIndex = 4;
@@ -80,7 +63,7 @@
             // 
             // GameLogin
             // 
-            this.GameLogin.Location = new System.Drawing.Point(332, 314);
+            this.GameLogin.Location = new System.Drawing.Point(221, 260);
             this.GameLogin.Name = "GameLogin";
             this.GameLogin.Size = new System.Drawing.Size(91, 23);
             this.GameLogin.TabIndex = 5;
@@ -88,21 +71,30 @@
             this.GameLogin.UseVisualStyleBackColor = true;
             this.GameLogin.Click += new System.EventHandler(this.GameLogin_Click);
             // 
+            // geckoWebBrowser1
+            // 
+            this.geckoWebBrowser1.Location = new System.Drawing.Point(12, 12);
+            this.geckoWebBrowser1.Name = "geckoWebBrowser1";
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(300, 230);
+            this.geckoWebBrowser1.TabIndex = 6;
+            this.geckoWebBrowser1.UseHttpActivityObserver = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 349);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(327, 293);
+            this.Controls.Add(this.geckoWebBrowser1);
             this.Controls.Add(this.GameLogin);
             this.Controls.Add(this.GameLogout);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CloseForm);
-            this.Controls.Add(this.geckoWebBrowser1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Login";
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_Closing);
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -111,11 +103,10 @@
 
         #endregion
 
-        private Skybound.Gecko.GeckoWebBrowser geckoWebBrowser1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button CloseForm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button GameLogout;
         private System.Windows.Forms.Button GameLogin;
+        private Gecko.GeckoWebBrowser geckoWebBrowser1;
     }
 }

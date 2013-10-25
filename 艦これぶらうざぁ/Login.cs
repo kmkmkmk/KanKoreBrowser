@@ -15,7 +15,7 @@ namespace 艦これぶらうざぁ
             Settings.LoadFromXmlFile();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private async void Login_Load(object sender, EventArgs e)
         {
             // ping(dmm.com)
             try
@@ -23,8 +23,14 @@ namespace 艦これぶらうざぁ
                 System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
                 System.Net.NetworkInformation.PingReply reply = p.Send("www.dmm.com");
                 p.Dispose();
+                // ログインページへ
                 geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
-
+                // 非同期で1秒間待機
+                await Task.Delay(1000);
+                // Window位置
+                geckoWebBrowser1.Window.ScrollTo(135, 200);
+                // スクロールバー隠し
+                geckoWebBrowser1.Navigate("javascript:(function(){document.body.style.overflow = \"hidden\"})();");
                 // タイマー開始
                 timer1.Start();
             }
@@ -51,11 +57,11 @@ namespace 艦これぶらうざぁ
             {
                 // Javascript実行
                 geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"iframe\").attr(\"src\")})();");
-                //非同期で2秒間待機
+                // 非同期で2秒間待機
                 await Task.Delay(2000);
                 // Javascript実行
                 geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"embed\").attr(\"src\")})();");
-                //非同期で2秒間待機
+                // 非同期で2秒間待機
                 await Task.Delay(2000);
                 // xmlに保存
                 Settings.Instance.tokenurl_s = geckoWebBrowser1.Url.ToString();
@@ -77,6 +83,12 @@ namespace 艦これぶらうざぁ
         {
             // 艦これゲームURL(未ログインの場合はログイン画面)
             geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
+        }
+
+        private void Login_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // タイマーストップ
+            timer1.Stop();
         }
     }
 }

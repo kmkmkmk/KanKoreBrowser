@@ -1,4 +1,5 @@
-﻿namespace 艦これぶらうざぁ
+﻿using System.Windows.Forms;
+namespace 艦これぶらうざぁ
 {
     partial class Main
     {
@@ -198,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.FormClosing += new FormClosingEventHandler(Main_Closing);
 
         }
 
