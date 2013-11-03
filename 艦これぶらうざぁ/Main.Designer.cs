@@ -45,6 +45,7 @@ namespace 艦これぶらうざぁ
             this.UpdateCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
+            this.ScreenShotandTweetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.SuspendLayout();
@@ -67,10 +68,11 @@ namespace 艦これぶらうざぁ
             this.LoginToolStripMenuItem,
             this.ScreecShotToolStripMenuItem,
             this.TwitterPostToolStripMenuItem,
+            this.ScreenShotandTweetToolStripMenuItem,
             this.TopShowToolStripMenuItem,
             this.CloseToolStripMenuItem});
             this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
-            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ファイルToolStripMenuItem.Text = "ファイル";
             // 
             // LoginToolStripMenuItem
@@ -78,7 +80,7 @@ namespace 艦これぶらうざぁ
             this.LoginToolStripMenuItem.Image = global::艦これぶらうざぁ.Properties.Resources.Key;
             this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
             this.LoginToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.LoginToolStripMenuItem.Text = "ログイン";
             this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
             // 
@@ -87,7 +89,7 @@ namespace 艦これぶらうざぁ
             this.ScreecShotToolStripMenuItem.Image = global::艦これぶらうざぁ.Properties.Resources.Save;
             this.ScreecShotToolStripMenuItem.Name = "ScreecShotToolStripMenuItem";
             this.ScreecShotToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.ScreecShotToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.ScreecShotToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.ScreecShotToolStripMenuItem.Text = "スクリーンショット撮影";
             this.ScreecShotToolStripMenuItem.Click += new System.EventHandler(this.ScreenShotToolStripMenuItem_Click);
             // 
@@ -96,14 +98,14 @@ namespace 艦これぶらうざぁ
             this.TwitterPostToolStripMenuItem.Image = global::艦これぶらうざぁ.Properties.Resources.Twitter;
             this.TwitterPostToolStripMenuItem.Name = "TwitterPostToolStripMenuItem";
             this.TwitterPostToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.TwitterPostToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.TwitterPostToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.TwitterPostToolStripMenuItem.Text = "Twitter投稿";
             this.TwitterPostToolStripMenuItem.Click += new System.EventHandler(this.TwitterPostToolStripMenuItem_Click);
             // 
             // TopShowToolStripMenuItem
             // 
             this.TopShowToolStripMenuItem.Name = "TopShowToolStripMenuItem";
-            this.TopShowToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.TopShowToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.TopShowToolStripMenuItem.Text = "最前面表示";
             this.TopShowToolStripMenuItem.Click += new System.EventHandler(this.TopShowToolStripMenuItem_Click);
             // 
@@ -111,7 +113,7 @@ namespace 艦これぶらうざぁ
             // 
             this.CloseToolStripMenuItem.Image = global::艦これぶらうざぁ.Properties.Resources.Exit;
             this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.CloseToolStripMenuItem.Text = "終了";
             this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
@@ -127,14 +129,14 @@ namespace 艦これぶらうざぁ
             // ScreenShotSaveToolStripMenuItem
             // 
             this.ScreenShotSaveToolStripMenuItem.Name = "ScreenShotSaveToolStripMenuItem";
-            this.ScreenShotSaveToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.ScreenShotSaveToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.ScreenShotSaveToolStripMenuItem.Text = "スクリーンショット保存先";
             this.ScreenShotSaveToolStripMenuItem.Click += new System.EventHandler(this.ScreenShotSaveToolStripMenuItem_Click);
             // 
             // TwitterLoginToolStripMenuItem
             // 
             this.TwitterLoginToolStripMenuItem.Name = "TwitterLoginToolStripMenuItem";
-            this.TwitterLoginToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.TwitterLoginToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.TwitterLoginToolStripMenuItem.Text = "Twitterアカウント連携";
             this.TwitterLoginToolStripMenuItem.Click += new System.EventHandler(this.TwitterLoginToolStripMenuItem_Click);
             // 
@@ -145,14 +147,14 @@ namespace 艦これぶらうざぁ
             this.UpdateCheckToolStripMenuItem,
             this.GCToolStripMenuItem});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // VersionInfoToolStripMenuItem
             // 
             this.VersionInfoToolStripMenuItem.Image = global::艦これぶらうざぁ.Properties.Resources.Info;
             this.VersionInfoToolStripMenuItem.Name = "VersionInfoToolStripMenuItem";
-            this.VersionInfoToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.VersionInfoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.VersionInfoToolStripMenuItem.Text = "バージョン情報";
             this.VersionInfoToolStripMenuItem.Click += new System.EventHandler(this.VersionInfoToolStripMenuItem_Click);
             // 
@@ -160,14 +162,14 @@ namespace 艦これぶらうざぁ
             // 
             this.UpdateCheckToolStripMenuItem.Image = global::艦これぶらうざぁ.Properties.Resources.Raise;
             this.UpdateCheckToolStripMenuItem.Name = "UpdateCheckToolStripMenuItem";
-            this.UpdateCheckToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.UpdateCheckToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.UpdateCheckToolStripMenuItem.Text = "更新確認";
             this.UpdateCheckToolStripMenuItem.Click += new System.EventHandler(this.UpdateCheckToolStripMenuItem_Click);
             // 
             // GCToolStripMenuItem
             // 
             this.GCToolStripMenuItem.Name = "GCToolStripMenuItem";
-            this.GCToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.GCToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.GCToolStripMenuItem.Text = "GC";
             this.GCToolStripMenuItem.Click += new System.EventHandler(this.GCToolStripMenuItem_Click);
             // 
@@ -183,6 +185,14 @@ namespace 艦これぶらうざぁ
             this.axShockwaveFlash1.Size = new System.Drawing.Size(800, 480);
             this.axShockwaveFlash1.TabIndex = 1;
             // 
+            // ScreenShotandTweetToolStripMenuItem
+            // 
+            this.ScreenShotandTweetToolStripMenuItem.Name = "ScreenShotandTweetToolStripMenuItem";
+            this.ScreenShotandTweetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.ScreenShotandTweetToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.ScreenShotandTweetToolStripMenuItem.Text = "スクリーンショット撮影後投稿";
+            this.ScreenShotandTweetToolStripMenuItem.Click += new System.EventHandler(this.ScreenShotandTweetToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -194,12 +204,12 @@ namespace 艦これぶらうざぁ
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "艦これぶらうざぁ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Closing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.FormClosing += new FormClosingEventHandler(Main_Closing);
 
         }
 
@@ -220,6 +230,7 @@ namespace 艦これぶらうざぁ
         private System.Windows.Forms.ToolStripMenuItem ScreenShotSaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TwitterLoginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateCheckToolStripMenuItem;
+        private ToolStripMenuItem ScreenShotandTweetToolStripMenuItem;
     }
 }
 

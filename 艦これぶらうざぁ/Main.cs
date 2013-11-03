@@ -143,12 +143,64 @@ namespace 艦これぶらうざぁ
         }
 
         private void TwitterPostToolStripMenuItem_Click(object sender, EventArgs e)
+        {          
+            // アカウントが設定済みか簡易確認
+            if (Settings.Instance.token_s != "" && Settings.Instance.select_s != "")
+            {
+                // Twitter投稿フォーム表示
+                TwitterPost f = new TwitterPost();
+                f.ShowInTaskbar = false;
+                f.ShowDialog(this);
+                f.Dispose();
+            }
+            else
+            {
+                // 設定済みでなければ警告を出した後にClose
+                MessageBox.Show("Twitterアカウントが設定されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ScreenShotandTweetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Twitter投稿フォーム表示
-            TwitterPost f = new TwitterPost();
-            f.ShowInTaskbar = false;
-            f.ShowDialog(this);
-            f.Dispose();
+            // 保存場所、トークンの有無をxmlに確認
+            if (Settings.Instance.save_s != ""　&& Settings.Instance.select_s !="" && Settings.Instance.token_s != "")
+            {
+                // 保存先が設定してあった場合SWFオブジェクトのみ撮影
+                Bitmap img = new Bitmap(axShockwaveFlash1.Width, axShockwaveFlash1.Height);
+                Graphics memg = Graphics.FromImage(img);
+                IntPtr dc = memg.GetHdc();
+                PrintWindow(axShockwaveFlash1.Handle, dc, 0);
+                memg.ReleaseHdc(dc);
+                memg.Dispose();
+                // png形式で保存
+                img.Save(Settings.Instance.save_s + "\\KanKore_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png", ImageFormat.Png);
+
+                // Twitter投稿フォーム表示
+                TwitterPost f = new TwitterPost();
+                f.ShowInTaskbar = false;
+                f.ShowDialog(this);
+                f.Dispose();
+            }
+            else if (Settings.Instance.save_s == "" && Settings.Instance.select_s == "" && Settings.Instance.token_s == "")
+            {
+                // 保存先、アカウント未設定の場合
+                MessageBox.Show("Twitterアカウントと保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ScreenShotSaveToolStripMenuItem.PerformClick();
+                TwitterLoginToolStripMenuItem.PerformClick();
+            }
+            else if (Settings.Instance.save_s != "" && (Settings.Instance.select_s == ""||
+                                                        Settings.Instance.token_s == ""))
+            {
+                // アカウント未設定の場合
+                MessageBox.Show("Twitterアカウントが設定されていません。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TwitterLoginToolStripMenuItem.PerformClick();
+            }
+            else if (Settings.Instance.save_s == "" && Settings.Instance.select_s != "" && Settings.Instance.token_s != "")
+            {
+                // 保存先未設定の場合
+                MessageBox.Show("保存先が設定されていません。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TwitterLoginToolStripMenuItem.PerformClick();
+            }
         }
 
         private void TopShowToolStripMenuItem_Click(object sender, EventArgs e)

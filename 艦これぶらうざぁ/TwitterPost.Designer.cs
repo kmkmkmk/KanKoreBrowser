@@ -35,6 +35,7 @@
             this.HashTag = new System.Windows.Forms.CheckBox();
             this.TweetCharacters = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.LastPicSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,15 +46,16 @@
             this.TweetText.Multiline = true;
             this.TweetText.Name = "TweetText";
             this.TweetText.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.TweetText.Size = new System.Drawing.Size(198, 101);
+            this.TweetText.Size = new System.Drawing.Size(198, 74);
             this.TweetText.TabIndex = 0;
+            this.TweetText.Text = "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ";
             this.TweetText.TextChanged += new System.EventHandler(this.TweetText_TextChanged);
             // 
             // Tweet
             // 
-            this.Tweet.Location = new System.Drawing.Point(108, 118);
+            this.Tweet.Location = new System.Drawing.Point(98, 118);
             this.Tweet.Name = "Tweet";
-            this.Tweet.Size = new System.Drawing.Size(102, 23);
+            this.Tweet.Size = new System.Drawing.Size(112, 23);
             this.Tweet.TabIndex = 2;
             this.Tweet.Text = "投稿(Ctrl+Enter)";
             this.Tweet.UseVisualStyleBackColor = true;
@@ -74,7 +76,7 @@
             // HashTag
             // 
             this.HashTag.AutoSize = true;
-            this.HashTag.Location = new System.Drawing.Point(41, 122);
+            this.HashTag.Location = new System.Drawing.Point(12, 95);
             this.HashTag.Name = "HashTag";
             this.HashTag.Size = new System.Drawing.Size(61, 16);
             this.HashTag.TabIndex = 4;
@@ -84,11 +86,12 @@
             // TweetCharacters
             // 
             this.TweetCharacters.AutoSize = true;
-            this.TweetCharacters.Location = new System.Drawing.Point(12, 123);
+            this.TweetCharacters.BackColor = System.Drawing.Color.White;
+            this.TweetCharacters.Location = new System.Drawing.Point(190, 69);
             this.TweetCharacters.Name = "TweetCharacters";
-            this.TweetCharacters.Size = new System.Drawing.Size(11, 12);
+            this.TweetCharacters.Size = new System.Drawing.Size(17, 12);
             this.TweetCharacters.TabIndex = 5;
-            this.TweetCharacters.Text = "0";
+            this.TweetCharacters.Text = "00";
             // 
             // label1
             // 
@@ -99,11 +102,21 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "ボックスをクリックして画像を追加できます";
             // 
+            // LastPicSelect
+            // 
+            this.LastPicSelect.Location = new System.Drawing.Point(98, 91);
+            this.LastPicSelect.Name = "LastPicSelect";
+            this.LastPicSelect.Size = new System.Drawing.Size(112, 23);
+            this.LastPicSelect.TabIndex = 7;
+            this.LastPicSelect.Text = "最新の画像を選択";
+            this.LastPicSelect.UseVisualStyleBackColor = true;
+            // 
             // TwitterPost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 150);
+            this.ClientSize = new System.Drawing.Size(416, 148);
+            this.Controls.Add(this.LastPicSelect);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Thumbnail);
             this.Controls.Add(this.TweetCharacters);
@@ -116,7 +129,6 @@
             this.MinimizeBox = false;
             this.Name = "TwitterPost";
             this.Text = "TwitterPost";
-            this.Load += new System.EventHandler(this.TwitterPost_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,5 +143,6 @@
         private System.Windows.Forms.CheckBox HashTag;
         private System.Windows.Forms.Label TweetCharacters;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button LastPicSelect;
     }
 }

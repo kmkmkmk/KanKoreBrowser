@@ -19,22 +19,6 @@ namespace 艦これぶらうざぁ
             Tweet.Enabled = false;
             // PictureBoxに""を
             Thumbnail.ImageLocation = "";
-        }
-
-        private void TwitterPost_Load(object sender, EventArgs e)
-        {
-            // アカウントが設定済みか簡易確認
-            if (Settings.Instance.token_s != "" && Settings.Instance.select_s != "")
-            {
-                // 設定済みならばToken等をセットする
-                service.AuthenticateWith(Settings.Instance.token_s, Settings.Instance.select_s);
-            }
-            else
-            {
-                // 設定済みでなければ警告を出した後にClose
-                MessageBox.Show("Twitterアカウントが設定されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
 
             // ハッシュタグの設定を読み込む
             if (Settings.Instance.hashtag_s == "True")
@@ -47,6 +31,9 @@ namespace 艦これぶらうざぁ
                 // 無効
                 HashTag.Checked = false;
             }
+
+            // Token等をセットする
+            service.AuthenticateWith(Settings.Instance.token_s, Settings.Instance.select_s);
         }
 
         private void TweetPost_Click(object sender, EventArgs e)

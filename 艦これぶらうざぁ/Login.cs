@@ -31,6 +31,7 @@ namespace 艦これぶらうざぁ
                 geckoWebBrowser1.Window.ScrollTo(135, 200);
                 // スクロールバー隠し
                 geckoWebBrowser1.Navigate("javascript:(function(){document.body.style.overflow = \"hidden\"})();");
+                Text = "Login (Step 1/3)";
                 // タイマー開始
                 timer1.Start();
             }
@@ -57,10 +58,12 @@ namespace 艦これぶらうざぁ
             {
                 // Javascript実行
                 geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"iframe\").attr(\"src\")})();");
+                Text = "Login (Step 2/3)";
                 // 非同期で2秒間待機
                 await Task.Delay(2000);
                 // Javascript実行
                 geckoWebBrowser1.Navigate("javascript:(function(){location.href=$(\"embed\").attr(\"src\")})();");
+                Text = "Login (Step 3/3)";
                 // 非同期で2秒間待機
                 await Task.Delay(2000);
                 // xmlに保存
@@ -79,10 +82,17 @@ namespace 艦これぶらうざぁ
             geckoWebBrowser1.Navigate("http://www.dmm.com/my/-/login/logout/");            
         }
 
-        private void GameLogin_Click(object sender, EventArgs e)
+        private async void GameLogin_Click(object sender, EventArgs e)
         {
             // 艦これゲームURL(未ログインの場合はログイン画面)
             geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
+            // 非同期で1秒間待機
+            await Task.Delay(1000);
+            // Window位置
+            geckoWebBrowser1.Window.ScrollTo(135, 200);
+            // スクロールバー隠し
+            geckoWebBrowser1.Navigate("javascript:(function(){document.body.style.overflow = \"hidden\"})();");
+            Text = "Login (Step 1/3)";
         }
 
         private void Login_Closing(object sender, System.ComponentModel.CancelEventArgs e)

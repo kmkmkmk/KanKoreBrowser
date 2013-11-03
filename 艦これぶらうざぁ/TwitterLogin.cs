@@ -17,6 +17,14 @@ namespace 艦これぶらうざぁ
             InitializeComponent();
             // xml読み込み
             Settings.LoadFromXmlFile();
+            if (Settings.Instance.select_s != "" && Settings.Instance.token_s != "")
+            {
+                label2.Text = "設定済み";
+            }
+            else
+            {
+                label2.Text = "未設定";
+            }
         }
 
         private void BrowserLogin_Click(object sender, System.EventArgs e)
