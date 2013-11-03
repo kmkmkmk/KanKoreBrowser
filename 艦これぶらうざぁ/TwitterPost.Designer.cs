@@ -48,7 +48,6 @@
             this.TweetText.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.TweetText.Size = new System.Drawing.Size(198, 74);
             this.TweetText.TabIndex = 0;
-            this.TweetText.Text = "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ";
             this.TweetText.TextChanged += new System.EventHandler(this.TweetText_TextChanged);
             // 
             // Tweet
@@ -110,6 +109,7 @@
             this.LastPicSelect.TabIndex = 7;
             this.LastPicSelect.Text = "最新の画像を選択";
             this.LastPicSelect.UseVisualStyleBackColor = true;
+            this.LastPicSelect.Click += new System.EventHandler(this.LastPicSelect_Click);
             // 
             // TwitterPost
             // 

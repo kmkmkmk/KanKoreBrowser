@@ -11,6 +11,7 @@ namespace 艦これぶらうざぁ
         private string select;
         private string tokenurl;
         private string save;
+        private string lastsave;
         private string hashtag;
 
         //設定のプロパティ
@@ -36,6 +37,12 @@ namespace 艦これぶらうざぁ
         {
             get { return save; }
             set { save = value; }
+        }
+
+        public string lastsave_s
+        {
+            get { return lastsave; }
+            set { lastsave = value; }
         }
 
         public string hashtag_s

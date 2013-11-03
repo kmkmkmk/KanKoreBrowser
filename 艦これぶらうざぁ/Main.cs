@@ -132,12 +132,16 @@ namespace 艦これぶらうざぁ
                 memg.ReleaseHdc(dc);
                 memg.Dispose();
                 // png形式で保存
-                img.Save(Settings.Instance.save_s + "\\KanKore_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png", ImageFormat.Png);
+                string now = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                img.Save(Settings.Instance.save_s + "\\KanKore_" + now + ".png", ImageFormat.Png);
+                // xmlにファイル名を記録
+                Settings.Instance.lastsave_s = "KanKore_" + now + ".png";
+                Settings.SaveToXmlFile();
             }
             else
             {
                 // 保存先未設定の場合
-                MessageBox.Show("保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ScreenShotSaveToolStripMenuItem.PerformClick();
             }
         }
@@ -173,8 +177,12 @@ namespace 艦これぶらうざぁ
                 memg.ReleaseHdc(dc);
                 memg.Dispose();
                 // png形式で保存
-                img.Save(Settings.Instance.save_s + "\\KanKore_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png", ImageFormat.Png);
-
+                string now = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                img.Save(Settings.Instance.save_s + "\\KanKore_" + now + ".png", ImageFormat.Png);
+                // xmlにファイル名を記録
+                Settings.Instance.lastsave_s = "KanKore_" + now + ".png";
+                Settings.SaveToXmlFile();
+                
                 // Twitter投稿フォーム表示
                 TwitterPost f = new TwitterPost();
                 f.ShowInTaskbar = false;
@@ -184,7 +192,7 @@ namespace 艦これぶらうざぁ
             else if (Settings.Instance.save_s == "" && Settings.Instance.select_s == "" && Settings.Instance.token_s == "")
             {
                 // 保存先、アカウント未設定の場合
-                MessageBox.Show("Twitterアカウントと保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Twitterアカウントと保存先が設定されていません。\n保存先を設定して下さい", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ScreenShotSaveToolStripMenuItem.PerformClick();
                 TwitterLoginToolStripMenuItem.PerformClick();
             }
@@ -192,7 +200,7 @@ namespace 艦これぶらうざぁ
                                                         Settings.Instance.token_s == ""))
             {
                 // アカウント未設定の場合
-                MessageBox.Show("Twitterアカウントが設定されていません。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Twitterアカウントが設定されていません。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TwitterLoginToolStripMenuItem.PerformClick();
             }
             else if (Settings.Instance.save_s == "" && Settings.Instance.select_s != "" && Settings.Instance.token_s != "")
@@ -265,8 +273,6 @@ namespace 艦これぶらうざぁ
 
         private void UpdateCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // ダウンロードページ開く
-            // Process.Start("http://info.iesaba.com/kankore/download.htm");
             // アップデートフォーム表示
             Update f = new Update();
             f.ShowInTaskbar = false;

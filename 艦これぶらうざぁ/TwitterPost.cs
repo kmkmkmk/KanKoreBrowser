@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using TweetSharp;
 
@@ -90,6 +91,30 @@ namespace 艦これぶらうざぁ
             {
                 // 例外発生時メッセージ
                 MessageBox.Show("何らかのエラーが発生し投稿できませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LastPicSelect_Click(object sender, EventArgs e)
+        {
+            if (Settings.Instance.save_s != "")
+            {
+                string imgpath = Settings.Instance.save_s + "\\" + Settings.Instance.lastsave_s;
+
+                if (System.IO.File.Exists(imgpath))
+                {
+                    // イメージボックスにセット
+                    Thumbnail.ImageLocation = imgpath;
+                }
+                else
+                {
+                    // 見つからなかった場合
+                    MessageBox.Show("最後に撮影されたスクリーンショットが見つかりませんでした","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // 保存先が設定されていなかった場合
+                MessageBox.Show("スクリーンショット撮影先が設定されていません","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
