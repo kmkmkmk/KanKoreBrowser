@@ -100,5 +100,10 @@ namespace 艦これぶらうざぁ
             // タイマーストップ
             timer1.Stop();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

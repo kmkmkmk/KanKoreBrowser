@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Diagnostics;
+
 
 namespace 艦これぶらうざぁ
 {
@@ -92,17 +93,9 @@ namespace 艦これぶらうざぁ
             // xml保存
             Settings.SaveToXmlFile();
             // SWF読み込み
-            try
-            {
-                axShockwaveFlash1.LoadMovie(0, "http://125.6.189.7/kcs/mainD2.swf");
-            }
-            catch
-            {
-                MessageBox.Show("インターネットに接続されていないか相手先サーバーがダウンしています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
+            axShockwaveFlash1.LoadMovie(0, "http://125.6.189.7/kcs/mainD2.swf");
         }
-
+        
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // ログインフォーム表示
@@ -176,9 +169,11 @@ namespace 艦これぶらうざぁ
                 PrintWindow(axShockwaveFlash1.Handle, dc, 0);
                 memg.ReleaseHdc(dc);
                 memg.Dispose();
+
                 // png形式で保存
                 string now = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
                 img.Save(Settings.Instance.save_s + "\\KanKore_" + now + ".png", ImageFormat.Png);
+
                 // xmlにファイル名を記録
                 Settings.Instance.lastsave_s = "KanKore_" + now + ".png";
                 Settings.SaveToXmlFile();
@@ -239,12 +234,15 @@ namespace 艦これぶらうざぁ
             // スクリーンショット保存先設定
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.Description = "保存先フォルダを指定してください。";
+            
             if (fbd.ShowDialog(this) == DialogResult.OK)
             {
                 // xmlに設定保存
                 Settings.Instance.save_s = fbd.SelectedPath;
                 Settings.SaveToXmlFile();
             }
+
+            fbd.Dispose();
         }
 
         private void TwitterLoginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,14 +259,29 @@ namespace 艦これぶらうざぁ
             // Assembly取得
             Assembly asm = Assembly.GetExecutingAssembly();
             Version ver = asm.GetName().Version;
+
+            // メモリ使用量取得
+            Process currentProcess = Process.GetCurrentProcess();
+            currentProcess.Refresh();
+            
             // メッセージボックス表示
-            MessageBox.Show("艦これぶらうざぁ " + ver + "\nLicense Agreement (The MIT/X11 License)\nCopyright (c) 2013 k725.\nhttp://my.iesaba.com/", "ばーじょん", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("艦これぶらうざぁ " + ver + "\nLicense Agreement (The MIT/X11 License)\nCopyright (c) 2013 k725.\nhttp://my.iesaba.com/","ばーじょん - UsingMemory" + (currentProcess.WorkingSet64 / 1048576) + "MB", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            
+            // 破棄
+            currentProcess.Dispose();            
         }
 
         private void GCToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 明示的にGC実行
-            GC.Collect();
+            // アクセス不可能なオブジェクトを除去
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+            // ファイナライゼーションが終わるまでスレッド待機
+            GC.WaitForPendingFinalizers();
+
+            // ファイナライズされたばかりのオブジェクトに関連するメモリを開放
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
         }
 
         private void UpdateCheckToolStripMenuItem_Click(object sender, EventArgs e)

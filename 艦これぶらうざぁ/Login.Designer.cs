@@ -36,6 +36,7 @@ namespace 艦これぶらうざぁ
             this.GameLogout = new System.Windows.Forms.Button();
             this.GameLogin = new System.Windows.Forms.Button();
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -79,11 +80,22 @@ namespace 艦これぶらうざぁ
             this.geckoWebBrowser1.TabIndex = 6;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(71, 260);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 293);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.geckoWebBrowser1);
             this.Controls.Add(this.GameLogin);
             this.Controls.Add(this.GameLogout);
@@ -108,5 +120,6 @@ namespace 艦これぶらうざぁ
         private System.Windows.Forms.Button GameLogout;
         private System.Windows.Forms.Button GameLogin;
         private Gecko.GeckoWebBrowser geckoWebBrowser1;
+        private Button button1;
     }
 }
