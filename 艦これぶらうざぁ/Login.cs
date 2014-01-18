@@ -22,29 +22,37 @@ namespace 艦これぶらうざぁ
 			// ログインページへ
 			geckoWebBrowser1.Navigate("https://www.dmm.com/my/-/login/=/path=Sg9VTQFXDFcXFl5bWlcKGExKUVdUXgFNEU0KSVMVR28MBQ0BUwJZBwxK/");
 
-			// 繰り返し 条件は常にTrue
-			while (true)
+			try
 			{
-				// 非同期で0.5秒間待機
-				await Task.Delay(500);
-
-				if (geckoWebBrowser1.DomDocument.ReadyState.ToString() == "complete")
+				// 繰り返し 条件は常にTrue
+				while (true)
 				{
-					// Window位置
-					geckoWebBrowser1.Window.ScrollTo(135, 200);
+					// 非同期で0.5秒間待機
+					await Task.Delay(500);
 
-					// スクロールバー隠し
-					geckoWebBrowser1.Navigate("javascript:(function(){document.body.style.overflow = \"hidden\"})();");
+					if (geckoWebBrowser1.DomDocument.ReadyState.ToString() == "complete")
+					{
+						// Window位置
+						geckoWebBrowser1.Window.ScrollTo(135, 200);
 
-					// タイトルテキスト変更
-					Text = "Login (Step 1/3)";
+						// スクロールバー隠し
+						geckoWebBrowser1.Navigate("javascript:(function(){document.body.style.overflow = \"hidden\"})();");
 
-					// タイマー開始
-					timer1.Start();
+						// タイトルテキスト変更
+						Text = "Login (Step 1/3)";
 
-					// ループ抜け出し
-					break;
+						// タイマー開始
+						timer1.Start();
+
+						// ループ抜け出し
+						break;
+					}
 				}
+			}
+			catch (Exception ex)
+			{
+				// Debug
+				Console.WriteLine(ex.ToString());
 			}
 		}
 
